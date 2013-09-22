@@ -1,0 +1,21 @@
+scan file,
+	store num_nodes
+	store bits_per_node
+	store hash of bits_uint --> list of node_num
+	store hash of node_num --> bits_uint
+
+define function: bits_uint --> bit pattern as a list
+
+# 0 bits hamming distance
+for each node_num in num_nodes:
+	get the node's bits_uint
+	get the list of nodes_num using hash
+	for each node_num in list (other than yourself): add edge with cost 0
+
+# 1 bit hamming distance
+for each node_num in num_nodes:
+	get the nodes' bits_uint
+	get the nodes' bit pattern
+
+	
+
