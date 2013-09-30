@@ -39,13 +39,13 @@ int read_file(char *filename, int *total_weight,
 	}
 
 	values = (value_t *) malloc(sizeof(value_t) + 
-											sizeof(int) * *num_items);
+									sizeof(int) * (*num_items + 1));
 	
 	weights = (weight_t *) malloc(sizeof(weight_t) +
-										sizeof(int) * *num_items);
+									sizeof(int) * (*num_items + 1));
 
 
-	i = 0;
+	i = 1;
 	while(fgets(line, 80, f) != NULL) {
 		if (i % 100 == 0)
 			printf("Scanning line %d\n", i);
