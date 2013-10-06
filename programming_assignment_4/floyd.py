@@ -1,5 +1,5 @@
 
-f = open('t5.txt', 'r')
+f = open('g3.txt', 'r')
 
 lines = f.readlines()
 
