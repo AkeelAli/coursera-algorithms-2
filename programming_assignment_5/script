@@ -1,0 +1,17 @@
+#!/bin/bash
+
+min=9999999
+
+for i in {1..1000}
+do
+	result=$(python question1.py)
+	echo $result, Min= $min
+
+	if [ $result \< $min ]  
+	then 
+		min=$result 
+	fi
+done
+
+echo "======="
+echo $min
