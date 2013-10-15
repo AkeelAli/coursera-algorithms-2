@@ -13,9 +13,9 @@ MIN_JOB_SIZE = 1
 
 
 #KNOBS
-MAX_JOBS = 10
-MAX_MACHINES = 5
-MAX_JOB_SIZE = 15
+MAX_JOBS = 30
+MAX_MACHINES = 10
+MAX_JOB_SIZE = 20
 
 
 jobs = []
@@ -24,7 +24,6 @@ num_machines = random.randint(MIN_MACHINES,MAX_MACHINES)
 
 for i in range(0,num_jobs):
 	jobs.append(random.randint(MIN_JOB_SIZE,MAX_JOB_SIZE))
-
 
 
 print jobs
@@ -89,7 +88,7 @@ for job in jobs:
 	min_machine = find_min_load_machine()
     	
 	machines[min_machine] += job
-    
+
 	if machines[min_machine] > makespan:
 		makespan = machines[min_machine]
 
