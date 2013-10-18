@@ -1,3 +1,6 @@
+import random
+import math
+
 f = open('2sat1.txt', 'r')
 lines = f.readlines()
 f.close()
@@ -60,3 +63,41 @@ while True:
 
 print "Number of clauses after pre-processing %d" % len(clauses)
 
+
+# Run Papadimitriou
+
+variables = {}
+for clause in clauses:
+	var1, var2 = abs(clause[0]), abs(clause[1])
+	
+	if var1 not in variables:
+		variables[var1] = 0 #random.randint(0,1)
+	if var2 not in variables:
+		variables[var2] = 0 #random.randint(0,1)
+
+n = len(variables)
+num_tries = int(math.log(n,2)) + 1
+for i in range(num_tries):
+	print "Try %d of %d" % (i,num_tries)
+	#INIT
+	for var in variables:
+		variables[var] = random.choice([-1,1])
+
+	for j in range(2*n**2):
+		clauses_met = True
+		for clause in clauses:
+			var1, var2 = abs(clause[0]), abs(clause[1])
+
+			if ( variables[var1] != clause[0]/abs(clause[0]) ) and ( variables[var1] != clause[1]/abs(clause[1]) ):
+				random_pick = random.choice([var1, var2])
+				variables[random_pick] = -1 * variables[random_pick]
+				clauses_met = False
+				break
+
+		if clauses_met:
+			print "Satisfiable!"
+			print clauses
+			print variables
+			exit(0)
+
+print "Unsatisfiable"
